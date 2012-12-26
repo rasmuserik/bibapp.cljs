@@ -1,4 +1,5 @@
-(ns hello)
+(ns hello
+  (:require [crate.core :as crate]))
 
 (defn hello 
   "print a greeting"
@@ -9,5 +10,4 @@
 (hello (reduce + ["foo" "bar"]))
 (map hello [124 324])
 (hello 'atom)
-
-;(.write js/document "<p>Hello, to you!</p>")
+(.appendChild js/document.body (crate/html [:span.test {:style "color: red"} "crate"]))
