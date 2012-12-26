@@ -6,7 +6,7 @@
                  [crate "0.2.3"]]
   :plugins [[lein-cljsbuild "0.2.10"]]
   :cljsbuild {
-    :crossovers [common.templates]
+;    :crossovers [common.templates]
     :builds [{
       :source-path "src/bibapp"
       :compiler {
