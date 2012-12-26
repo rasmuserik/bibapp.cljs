@@ -2,6 +2,7 @@
 /lib
 /checkouts
 /classes
+/.crossover-cljs
 *.jar
 *.class
 *.js

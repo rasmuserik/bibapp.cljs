@@ -6,9 +6,13 @@
                  [crate "0.2.3"]]
   :plugins [[lein-cljsbuild "0.2.10"]]
   :cljsbuild {
+    :crossovers [common.templates]
     :builds [{
-      :source-path "src/client"
+      :source-path "src/bibapp"
       :compiler {
         :output-to "resources/public/main.js"
         :optimizations :whitespace
-        :pretty-print true}}]})
+        :pretty-print true
+        ;:optimizations :advanced
+        ;:pretty-print false
+                 }}]})
