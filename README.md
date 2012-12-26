@@ -18,6 +18,7 @@ Mobile/html5 public library app.
         - Log ud
     - backend only implented as mock
 - Later
+    - unittest with phantom-js
     - Åbningstider
     - søgefelt med completion
     - bog-lister
