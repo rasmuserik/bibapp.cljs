@@ -3,6 +3,9 @@
             [cljs.core :as core]
             ))
 
+(set! core/*print-fn* (fn [x] (.log js/console x)))
+
+
 (def frontPage [:div.foo.bar
                 [:div.header [:span.leftIcon] [:input.searchField] [:span.searchIcon]]
                 [:h1.biblogo "Kardemommeby Bibliotek"]
@@ -19,15 +22,22 @@
                  [:li.item [:span.date "3/1-13"] [:span.content "blah blah blah"]]]])
 
 (.appendChild js/document.body (crate/html frontPage))
-(def style {
-  :header {:position "fixed"
+(defn style 
+  "create a style object based on the window dimensions"
+  [width height]
+  (let 
+    [w (min height width)
+     unit (int (/ w 6))]
+     { :header 
+         {:position "fixed"
            :top 0
            :left 0
-           :width "100%"
+           :width w 
+           :height unit
            :background "rgba(0,0,255,0.1)"
            }
-  :searchField { :background "rgba(0,0,255,0)" }
-  :item {:background "red"}})
+        :searchField { :background "rgba(0,0,255,0)" }
+        :item {:background "red"}}))
 
 (defn for-each 
   "execute a function on each member of a sequence"
@@ -57,10 +67,13 @@
                  (if-let [style (styleObj (keyword cls))]
                    (let [styleTarget (.-style elem)]
                      (for-each (fn [styleItem]
-                         (aset styleTarget (name (key styleItem)) (val styleItem)))
+                         (let [k (key styleItem)
+                               v (val styleItem)]
+                          (aset styleTarget (name (key styleItem)) (print (typeof (val styleItem))))))
                        style)) 
                    nil
                  ))
       (.-classList elem)))))
   
-(applyStyle style)
+(applyStyle (style (.-innerWidth js/window) (.-innerHeight js/window)))
+(println (style (.-innerWidth js/window) (.-innerHeight js/window)))
