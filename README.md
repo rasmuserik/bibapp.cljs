@@ -1,4 +1,4 @@
-[![ci](https://secure.travis-ci.org/rasmuserik/bibapp.png)](http://travis-ci.org/rasmuserik/bibapp)
+![logo](https://solsort.com/_logo.png) [![ci](https://secure.travis-ci.org/rasmuserik/bibapp.png)](http://travis-ci.org/rasmuserik/bibapp)
 # BibApp
 
 Mobile/html5 public library app.
